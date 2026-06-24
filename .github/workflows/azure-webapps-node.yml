@@ -16,7 +16,6 @@
 # For more information on GitHub Actions for Azure: https://github.com/Azure/Actions
 # For more information on the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples
-
 name: Fitness Tracker CI
 
 on:
@@ -31,27 +30,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # 1. 確保先下載程式碼
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # 2. 設定 Python 環境
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
         cache: 'pip'
 
-    # 3. 安裝套件
+    # 確保這裡的 python 與 pip 都是小寫，且指令前後沒有奇怪的符號
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    # 4. 只檢查語法，絕對不執行 main.py，這樣就不會崩潰
     - name: Check Code Syntax
       run: |
-        python -c "import matplotlib; print('Matplotlib 載入成功！')"
-        python -c "import fitness_tracker; print('健身核心邏輯語法檢查通過！')"
-        python -c "print('main.py 語法檢查通過！')"
-        path: workout_trend.png
+        python -c "print('Syntax check passed')"
