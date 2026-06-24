@@ -11,7 +11,6 @@ class FitnessTracker:
         self.personal_records = {"深蹲": 110, "臥推": 70}
         self.history_volumes = [2500, 2600, 2450, 2700]
         
-        # 🔥 核心關鍵：檢查是否在 GitHub Actions 環境中執行
         self.is_github_actions = os.environ.get('GITHUB_ACTIONS') == 'true'
 
     # === A. 訓練前 ===
