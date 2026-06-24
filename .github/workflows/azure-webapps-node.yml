@@ -55,10 +55,8 @@ jobs:
         python -c "import fitness_tracker; print('健身 APP 核心邏輯語法檢查通過！')"
 
     # 5. 模擬自動化執行並生成圖表 (使用 Pipe 餵入虛擬鍵盤輸入，避免 exit code 254)
-    - name: Generate Workout Report
-      run: |
-        # 模擬輸入：1(按計畫訓練) -> 錄入動作 -> 自動休息 -> 結束 -> RPE 填 8
-        echo -e "1\n100\n5\n60\n8\n\n8" | python main.py
+    - name: Generate Workout Report via CI Script
+      run: python ci_test.py  # 執行這個完全沒有 input() 的專用測試檔
 
     # 6. 上傳產物：將生成的趨勢圖 (workout_trend.png) 封存到 GitHub 專案中
     - name: Upload Artifact
